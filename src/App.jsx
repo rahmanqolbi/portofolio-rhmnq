@@ -76,10 +76,10 @@ const Navbar = ({ toggleMenu, isMenuOpen }) => {
     <nav className={`flex-row navbar items-center justify-space-between container ${isMenuOpen ? 'menu-bg' : ''}`}>
       <Link to="/" className="logo">rhmnq</Link>
       <ul className={`nav-list ${isMenuOpen ? 'menu-toggle' : ''}`}>
-        <li className="nav-item"><Link to="./" className={`tab ${isActive('/')}`} onClick={toggleMenu}>Home</Link></li>
-        <li className="nav-item"><Link to="./portofolio" className={`tab ${isActive('./portofolio')}`} onClick={toggleMenu}>Portofolio</Link></li>
-        <li className="nav-item"><Link to="./kemampuan" className={`tab ${isActive('./kemampuan')}`} onClick={toggleMenu}>Kemampuan</Link></li>
-        <li className="nav-item"><Link to="./hubungi" className={`tab ${isActive('./hubungi')}`} onClick={toggleMenu}>Hubungi</Link></li>
+        <li className="nav-item"><Link to="/" className={`tab ${isActive('/')}`} onClick={toggleMenu}>Home</Link></li>
+        <li className="nav-item"><Link to="/portofolio" className={`tab ${isActive('/portofolio')}`} onClick={toggleMenu}>Portofolio</Link></li>
+        <li className="nav-item"><Link to="/kemampuan" className={`tab ${isActive('/kemampuan')}`} onClick={toggleMenu}>Kemampuan</Link></li>
+        <li className="nav-item"><Link to="/hubungi" className={`tab ${isActive('/hubungi')}`} onClick={toggleMenu}>Hubungi</Link></li>
       </ul>
       <div className="menu" onClick={toggleMenu}>
         <div className="menu-line"></div>
@@ -119,7 +119,7 @@ function App() {
   ];
 
   return (
-    <Router>
+    <Router basename="/portofolio-rhmnq">
       <div className="App">
         <header>
             <Navbar toggleMenu={() => setIsMenuOpen(prev => !prev)} isMenuOpen={isMenuOpen} />
@@ -141,10 +141,10 @@ function App() {
             // agar <article> dengan flexGrow: 1 yang mengontrol posisinya (mengisi penuh).
           }}>
             <Routes>
-              <Route path="./" element={<Home />} />
-              <Route path="./portofolio" element={<Portofolio portfolios={portfolios} />} />
-              <Route path="./kemampuan" element={<Kemampuan skills={skills} />} />
-              <Route path="./hubungi" element={<Hubungi contacts={contacts} />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/portofolio" element={<Portofolio portfolios={portfolios} />} />
+              <Route path="/kemampuan" element={<Kemampuan skills={skills} />} />
+              <Route path="/hubungi" element={<Hubungi contacts={contacts} />} />
             </Routes>
           </div>
 
