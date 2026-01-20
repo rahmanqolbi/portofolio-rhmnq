@@ -97,25 +97,25 @@ function App() {
   const currentYear = new Date().getFullYear();
 
   const portfolios = [
-    { title: "Catatanku", img: "img/portfolio/catatanku.jpeg", visitLink: "https://catatanku.vercel.app", githubLink: "https://github.com/rahmanqolbi" },
-    { title: "Website Portofolio Tailwind", img: "img/portfolio/portofolio-tailwind.png", visitLink: "https://rahmanqolbi.vercel.app/", githubLink: "https://github.com/rahmanqolbi" },
-    { title: "Website Berita Bootstrap", img: "img/portfolio/berita-bootstrap.png", visitLink: "https://whistleable-varieti.000webhostapp.com", githubLink: "https://github.com/rahmanqolbi" },
-    { title: "Website Tiket Pesawat", img: "img/portfolio/tiket-pesawat.png", visitLink: "/", githubLink: "/" }
+    { title: "Catatanku", img: "./img/portfolio/catatanku.jpeg", visitLink: "https://catatanku.vercel.app", githubLink: "https://github.com/rahmanqolbi" },
+    { title: "Website Portofolio Tailwind", img: "./img/portfolio/portofolio-tailwind.png", visitLink: "https://rahmanqolbi.vercel.app/", githubLink: "https://github.com/rahmanqolbi" },
+    { title: "Website Berita Bootstrap", img: "./img/portfolio/berita-bootstrap.png", visitLink: "https://whistleable-varieti.000webhostapp.com", githubLink: "https://github.com/rahmanqolbi" },
+    { title: "Website Tiket Pesawat", img: "./img/portfolio/tiket-pesawat.png", visitLink: "/", githubLink: "/" }
   ];
 
   const skills = [
-    { name: "HTML", img: "img/skills/html.png" },
-    { name: "CSS", img: "img/skills/css.png" },
-    { name: "Javascript", img: "img/skills/javascript.png" },
-    { name: "Bootstrap", img: "img/skills/bootstrap.png" },
-    { name: "Tailwind", img: "img/skills/tailwind.png" },
-    { name: "Flutter", img: "img/skills/flutter.png" }
+    { name: "HTML", img: "./img/skills/html.png" },
+    { name: "CSS", img: "./img/skills/css.png" },
+    { name: "Javascript", img: "./img/skills/javascript.png" },
+    { name: "Bootstrap", img: "./img/skills/bootstrap.png" },
+    { name: "Tailwind", img: "./img/skills/tailwind.png" },
+    { name: "Flutter", img: "./img/skills/flutter.png" }
   ];
 
   const contacts = [
-    { platform: "Email", value: "rahmanqolbi@gmail.com", img: "img/contact/email.png" },
-    { platform: "Facebook", value: "Rahman Qolbi", img: "img/contact/facebook.png" },
-    { platform: "Instagram", value: "@rahmanqolbi", img: "img/contact/instagram.png" }
+    { platform: "Email", value: "rahmanqolbi@gmail.com", img: "./img/contact/email.png" },
+    { platform: "Facebook", value: "Rahman Qolbi", img: "./img/contact/facebook.png" },
+    { platform: "Instagram", value: "@rahmanqolbi", img: "./img/contact/instagram.png" }
   ];
 
   return (
@@ -141,10 +141,10 @@ function App() {
             // agar <article> dengan flexGrow: 1 yang mengontrol posisinya (mengisi penuh).
           }}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/portofolio" element={<Portofolio portfolios={portfolios} />} />
-              <Route path="/kemampuan" element={<Kemampuan skills={skills} />} />
-              <Route path="/hubungi" element={<Hubungi contacts={contacts} />} />
+              <Route path="./" element={<Home />} />
+              <Route path="./portofolio" element={<Portofolio portfolios={portfolios} />} />
+              <Route path="./kemampuan" element={<Kemampuan skills={skills} />} />
+              <Route path="./hubungi" element={<Hubungi contacts={contacts} />} />
             </Routes>
           </div>
 
@@ -158,7 +158,7 @@ function App() {
             className="flex-column items-center card"
             style={{ justifyContent: 'center' }} 
           >
-            <img src="img/biodata.png" alt="Foto Profil" className="biodata-img" />
+            <img src="./img/biodata.png" alt="Foto Profil" className="biodata-img" />
             <h1>Rahman Qolbi</h1>
             <hr className="solid" />
             <h2>Web Developer</h2>
