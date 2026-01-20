@@ -76,10 +76,10 @@ const Navbar = ({ toggleMenu, isMenuOpen }) => {
     <nav className={`flex-row navbar items-center justify-space-between container ${isMenuOpen ? 'menu-bg' : ''}`}>
       <Link to="/" className="logo">rhmnq</Link>
       <ul className={`nav-list ${isMenuOpen ? 'menu-toggle' : ''}`}>
-        <li className="nav-item"><Link to="/" className={`tab ${isActive('/')}`} onClick={toggleMenu}>Home</Link></li>
-        <li className="nav-item"><Link to="/portofolio" className={`tab ${isActive('/portofolio')}`} onClick={toggleMenu}>Portofolio</Link></li>
-        <li className="nav-item"><Link to="/kemampuan" className={`tab ${isActive('/kemampuan')}`} onClick={toggleMenu}>Kemampuan</Link></li>
-        <li className="nav-item"><Link to="/hubungi" className={`tab ${isActive('/hubungi')}`} onClick={toggleMenu}>Hubungi</Link></li>
+        <li className="nav-item"><Link to="./" className={`tab ${isActive('/')}`} onClick={toggleMenu}>Home</Link></li>
+        <li className="nav-item"><Link to="./portofolio" className={`tab ${isActive('./portofolio')}`} onClick={toggleMenu}>Portofolio</Link></li>
+        <li className="nav-item"><Link to="./kemampuan" className={`tab ${isActive('./kemampuan')}`} onClick={toggleMenu}>Kemampuan</Link></li>
+        <li className="nav-item"><Link to="./hubungi" className={`tab ${isActive('./hubungi')}`} onClick={toggleMenu}>Hubungi</Link></li>
       </ul>
       <div className="menu" onClick={toggleMenu}>
         <div className="menu-line"></div>
