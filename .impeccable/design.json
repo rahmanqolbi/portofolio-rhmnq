@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-18T11:40:00Z",
+  "title": "Design System: Rahman Qolbi Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Electric Lime Bud",
+        "canonical": "oklch(88% 0.12 125)",
+        "tonalRamp": [
+          "#2e3d0c",
+          "#4d6317",
+          "#6e8b22",
+          "#91b42e",
+          "#b4dc3b",
+          "#ccf257",
+          "#d8e9a8",
+          "#ecf5d4"
+        ]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Midnight Pine",
+        "canonical": "oklch(18% 0.005 135)",
+        "tonalRamp": [
+          "#080908",
+          "#0f100f",
+          "#191a19",
+          "#222422",
+          "#2d302d",
+          "#3a3d3a",
+          "#4a4e4a",
+          "#636863"
+        ]
+      },
+      "card-bg": {
+        "role": "neutral",
+        "displayName": "Deep Forest Sage",
+        "canonical": "oklch(35% 0.08 140)",
+        "tonalRamp": [
+          "#061408",
+          "#0b210f",
+          "#123217",
+          "#1a4320",
+          "#1e5128",
+          "#266432",
+          "#307d3f",
+          "#3fa553"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nama utama portofolio personal."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Judul pembuka dan judul bagian kartu."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Deskripsi proyek dan bacaan biodata utama."
+      }
+    },
+    "shadows": [
+      {
+        "name": "Tactile Shadow Double",
+        "value": "7px -7px 1px #1a4522, -7px 7px 1px #235d2e",
+        "purpose": "Efek timbul tiga dimensi pada kartu yang tegas dan kokoh."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Transisi navigasi statis dan perubahan opacity saat hover."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "576px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tombol aksen utama untuk link eksternal (Visit/Github).",
+      "html": "<a href=\"#\" class=\"ds-btn\">Visit</a>",
+      "css": ".ds-btn { display: inline-block; padding: 6px 16px; margin: 3px; font-family: 'Quicksand', sans-serif; font-size: 14px; font-weight: 600; text-align: center; text-decoration: none; border-radius: 10px; border: 1px solid #D8E9A8; background-color: #1E5128; color: #D8E9A8; cursor: pointer; transition: opacity 0.2s ease, box-shadow 0.2s ease; } .ds-btn:hover { opacity: 0.6; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); }"
+    },
+    {
+      "name": "Tactile Card",
+      "kind": "card",
+      "description": "Kotak pengisi konten utama dengan bayangan taktil neomorphic ganda.",
+      "html": "<div class=\"ds-card\">\n  <h3>Halo Semua...</h3>\n  <p>Ini adalah demo dari Neumorphic Card.</p>\n</div>",
+      "css": ".ds-card { font-family: 'Quicksand', sans-serif; padding: 16px; border-radius: 50px; background: #1E5128; color: #D8E9A8; box-shadow: 7px -7px 1px #1a4522, -7px 7px 1px #235d2e; }"
+    },
+    {
+      "name": "Navbar Tab",
+      "kind": "nav",
+      "description": "Item navigasi atas dengan indikator rute aktif.",
+      "html": "<ul class=\"ds-nav\">\n  <li><a href=\"#\" class=\"ds-tab ds-active\">Home</a></li>\n  <li><a href=\"#\" class=\"ds-tab\">Portofolio</a></li>\n</ul>",
+      "css": ".ds-nav { list-style: none; display: flex; gap: 16px; font-family: 'Quicksand', sans-serif; } .ds-tab { font-size: 16px; font-weight: 500; color: #D8E9A8; text-decoration: none; cursor: pointer; transition: opacity 0.2s ease; } .ds-tab:hover, .ds-active { opacity: 0.8; font-weight: 700; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cozy Forest Terminal",
+    "overview": "\"The Cozy Forest Terminal\" menggabungkan kehangatan nuansa alam hijau hutan yang tenang dengan fungsionalitas dan kepraktisan minimalis khas terminal konsol developer. Tampilan ini didesain agar terasa bersahabat bagi sesama pengembang (fellow developers), mengesampingkan gimik korporat yang kaku, dan berfokus pada penyajian profil yang jujur, santai, namun memiliki tingkat craftmanship yang tinggi.",
+    "keyCharacteristics": [
+      "Tactile Comfort: Menggunakan kartu-kartu berlekuk sangat membulat (50px) dengan bayangan tebal bertumpuk yang memberikan kesan empuk.",
+      "Deep Muted Contrast: Perpaduan kontras warna gelap pinus dengan pendaran aksen hijau jeruk nipis elektrik yang nyaman di mata.",
+      "Strictly Minimalist: Menghindari elemen garis hiasan/pembatas buatan yang tidak fungsional, membiarkan whitespace dan bayangan bekerja."
+    ],
+    "rules": [
+      {
+        "name": "The Forest Rarity Rule",
+        "body": "Warna Electric Lime Bud digunakan maksimal pada 15% dari total visual halaman. Peran aksen ini harus dihemat hanya untuk elemen interaktif agar maknanya tetap kuat.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Tombol dan kartu bersifat statis dengan bayangan neumorfik saat diam. Efek transisi bayangan lembut dan perubahan opacity hanya terjadi secara halus saat merespons interaksi aktif kursor (hover/focus).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pertahankan font Quicksand di seluruh bagian teks untuk konsistensi ramah dan santai.",
+      "Do gunakan rasio kontras tinggi antara Electric Lime Bud (#D8E9A8) dengan warna Midnight Pine (#191A19) untuk memastikan teks sangat mudah dibaca.",
+      "Do pastikan semua sudut kartu berukuran besar (50px) agar filosofi \"Tactile Soft Blocks\" tetap terjaga secara konsisten.",
+      "Do gunakan path absolut /img/... untuk semua aset statis di halaman portofolio, kemampuan, dan kontak agar bebas dari broken links."
+    ],
+    "donts": [
+      "Don't menggunakan side-stripe borders (garis aksen tebal berwarna di sisi kiri/kanan kartu) sebagai hiasan.",
+      "Don't mencampuradukkan font lain (seperti Roboto atau Inter) ke dalam halaman tanpa alasan yang kuat.",
+      "Don't menumpuk kartu di dalam kartu (nested cards); biarkan tata letak teratur secara alami.",
+      "Don't menggunakan warna teks putih murni (#ffffff) atau hitam murni (#000000); semua warna netral harus ter-tint lembut dengan rona hijau Midnight Pine."
+    ]
+  }
+}

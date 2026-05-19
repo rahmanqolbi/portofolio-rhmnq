@@ -1,0 +1,74 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/index.css';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Portofolio Pribadi Rahman Qolbi - Web Developer. Masih terus belajar dan terus belajar." 
+} = Astro.props;
+---
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SPA Mode (Instant Transitions) -->
+    <ClientRouter />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rqlb.my.id/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rqlb.my.id/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://rqlb.my.id/img/biodata.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://rqlb.my.id/" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://rqlb.my.id/img/biodata.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="flex flex-col items-center min-h-screen lg:h-screen lg:overflow-hidden w-full py-1.5 lg:py-2.5 justify-between">
+      <header class="w-full block">
+        <Navbar />
+      </header>
+
+      <main class="flex flex-col lg:flex-row max-w-[1140px] w-full mx-auto px-4 lg:px-0 flex-grow items-center lg:items-stretch justify-center gap-8 lg:gap-0 my-4 lg:my-0 min-h-0 lg:py-2">
+        {/* BAGIAN KIRI: Main Page Content */}
+        <div id="main-content-wrapper" class="flex-[5] lg:mr-10 min-w-0 flex flex-col w-full items-stretch lg:h-full">
+          <slot />
+        </div>
+
+
+
+        {/* BAGIAN KANAN: Sidebar Biodata */}
+        <Sidebar />
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

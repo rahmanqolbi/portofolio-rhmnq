@@ -1,0 +1,149 @@
+---
+const pathname = Astro.url.pathname;
+
+// Helper function to check if the current path matches the link path, ignoring trailing slashes
+const isActive = (path: string) => {
+  const normPathname = pathname.replace(/\/$/, "");
+  const normPath = path.replace(/\/$/, "");
+  return normPathname === normPath || (path === "/" && normPathname === "");
+};
+---
+
+<nav class="flex flex-row items-center justify-between w-full max-w-[1140px] mx-auto py-2.5 px-4 lg:px-0 sticky top-0 z-50 bg-midnight-pine flex-wrap navbar">
+  <a href="/" class="logo text-lg font-semibold text-lime-bud [text-shadow:0_2px_4px_rgba(0,0,0,0.2)]">rqlb</a>
+  
+  <div class="menu block sm:hidden [box-shadow:0_2px_4px_rgba(0,0,0,0.2)] cursor-pointer focus:outline-none" aria-label="Toggle Menu" role="button" tabindex="0">
+    <div class="menu-line w-5 h-[3px] bg-lime-bud mt-1"></div>
+    <div class="menu-line w-5 h-[3px] bg-lime-bud mt-1"></div>
+    <div class="menu-line w-5 h-[3px] bg-lime-bud mt-1"></div>
+  </div>
+
+  <ul class="nav-list flex-col sm:flex-row hidden sm:flex w-full sm:w-auto text-center pt-2 sm:pt-0">
+    <li class="inline-block sm:block py-2 sm:py-0 pl-0 sm:pl-8">
+      <a href="/" class={`tab text-base text-lime-bud font-semibold cursor-pointer transition-all ${isActive('/') ? 'opacity-100 active-tab' : 'opacity-65 hover:opacity-100'}`}>Home</a>
+    </li>
+    <li class="inline-block sm:block py-2 sm:py-0 pl-0 sm:pl-8">
+      <a href="/portofolio" class={`tab text-base text-lime-bud font-semibold cursor-pointer transition-all ${isActive('/portofolio') ? 'opacity-100 active-tab' : 'opacity-65 hover:opacity-100'}`}>Portofolio</a>
+    </li>
+    <li class="inline-block sm:block py-2 sm:py-0 pl-0 sm:pl-8">
+      <a href="/kemampuan" class={`tab text-base text-lime-bud font-semibold cursor-pointer transition-all ${isActive('/kemampuan') ? 'opacity-100 active-tab' : 'opacity-65 hover:opacity-100'}`}>Kemampuan</a>
+    </li>
+    <li class="inline-block sm:block py-2 sm:py-0 pl-0 sm:pl-8">
+      <a href="/hubungi" class={`tab text-base text-lime-bud font-semibold cursor-pointer transition-all ${isActive('/hubungi') ? 'opacity-100 active-tab' : 'opacity-65 hover:opacity-100'}`}>Hubungi</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .tab {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tab::before {
+    content: "[";
+    position: absolute;
+    top: 50%;
+    left: -14px;
+    color: var(--color-lime-bud);
+    font-weight: 400;
+    opacity: 0.08;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .tab::after {
+    content: "]";
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    color: var(--color-lime-bud);
+    font-weight: 400;
+    opacity: 0.08;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .tab:hover::before,
+  .active-tab::before {
+    opacity: 0.55;
+    left: -8px;
+  }
+  
+  .tab:hover::after,
+  .active-tab::after {
+    opacity: 0.55;
+    right: -8px;
+  }
+  
+  .active-tab::before,
+  .active-tab::after {
+    opacity: 0.75 !important;
+    color: var(--color-lime-bud) !important;
+  }
+
+  /* Scoped styling for mobile hamburger overlays */
+  @media only screen and (max-width: 640px) {
+    .navbar {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+    .nav-list {
+      display: none;
+    }
+    .menu-toggle {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      text-align: center !important;
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+    .menu-toggle li {
+      display: block !important;
+      padding: 0.75rem 0 !important;
+      padding-left: 0 !important; /* Reset desktop pl-8 padding */
+    }
+    .menu-bg {
+      background: rgba(25, 26, 25, 0.96) !important;
+      border: 1px solid rgba(216, 233, 168, 0.15) !important;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5) !important;
+      border-radius: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Handing mobile hamburger menu interactivity with Astro View Transitions (ClientRouter)
+  document.addEventListener('astro:page-load', () => {
+    const menuBtn = document.querySelector('.menu');
+    const navList = document.querySelector('.nav-list');
+    const navbar = document.querySelector('.navbar');
+
+    menuBtn?.addEventListener('click', () => {
+      navList?.classList.toggle('menu-toggle');
+      navbar?.classList.toggle('menu-bg');
+    });
+
+    // Support keyboard triggers (Enter & Space keys)
+    menuBtn?.addEventListener('keydown', (e) => {
+      const keyboardEvent = e as KeyboardEvent;
+      if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+        e.preventDefault();
+        navList?.classList.toggle('menu-toggle');
+        navbar?.classList.toggle('menu-bg');
+      }
+    });
+
+    // Close menu when navigating (clicking a link)
+    const navLinks = document.querySelectorAll('.tab');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList?.classList.remove('menu-toggle');
+        navbar?.classList.remove('menu-bg');
+      });
+    });
+  });
+</script>

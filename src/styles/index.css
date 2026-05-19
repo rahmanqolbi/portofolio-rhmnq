@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-midnight-pine: #191A19;
+  --color-forest-sage: #1E5128;
+  --color-lime-bud: #D8E9A8;
+  --color-shadow-dark: #1a4522;
+  --color-shadow-light: #235d2e;
+  
+  --radius-card: 50px;
+  --radius-btn: 10px;
+  --radius-btn-mobile: 5px;
+  --radius-img: 20px;
+  --radius-profile: 100px;
+  
+  --shadow-tactile-double: 7px -7px 2px var(--color-shadow-dark), -7px 7px 2px var(--color-shadow-light);
+  --shadow-tactile-profile: 7px -7px 2px var(--color-shadow-dark), -7px 7px 2px var(--color-shadow-light);
+  
+  --font-sora: "Sora", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+}
+
+html {
+    scrollbar-gutter: stable;
+    overflow-y: auto;
+    height: 100%;
+    background-color: var(--color-midnight-pine);
+}
+
+/* Custom Scrollbar Premium */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-midnight-pine);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-shadow-light);
+    border-radius: 10px;
+    border: 1px solid var(--color-midnight-pine);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-lime-bud);
+}
+
+body {
+    font-family: var(--font-manrope);
+    background-color: var(--color-midnight-pine);
+    color: var(--color-lime-bud);
+    overflow-x: hidden;
+    scroll-padding-top: 50px;
+    margin: 0;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .logo, .tab, button, [role="button"], a.rounded-btn, a.rounded-btn-mobile {
+    font-family: var(--font-sora);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-lime-bud);
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+@keyframes forestBreezeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+article {
+    scroll-margin-top: 68px;
+    animation: none;
+    opacity: 1;
+}
+
+.bg-forest-sage, aside {
+    background: radial-gradient(circle at 80% 20%, var(--color-shadow-light) 0%, var(--color-forest-sage) 60%, var(--color-shadow-dark) 100%) !important;
+}
+
+/* Sembunyikan scrollbar untuk menyempurnakan visual App Shell Desktop */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* 🎯 ISOLASI TRANSISI KONTEN: Menjaga Navbar dan Sidebar tetap 100% diam dan kokoh */
+#main-content-wrapper {
+    view-transition-name: main-content;
+}
+
+/* Mengunci warna latar belakang transisi untuk mencegah kilatan warna sekejap */
+::view-transition {
+    background-color: var(--color-midnight-pine) !important;
+}
+
+/* ⚡ ZERO ANIMATION ABSOLUT (0ms Swap): Transisi instan murni tanpa animasi memudar/geser sama sekali */
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+    animation: none !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-fill-mode: forwards !important;
+}
+
+
+
+
+
+
+img {
+    color: transparent; /* Sembunyikan placeholder alt-text putih Chrome saat pemuatan */
+    background-color: transparent !important;
+}
+
+/* 🎯 RESET AUTOFILL BROWSER: Menghentikan kotak putih/biru kaku bawaan Chrome saat mengetik/autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected,
+textarea:-internal-autofill-previewed,
+textarea:-internal-autofill-selected {
+    -webkit-text-fill-color: #f1f5f9 !important; /* Menjaga teks tetap putih hangat premium */
+    color: #f1f5f9 !important; /* Cadangan pemaksaan warna teks di status tertentu */
+    -webkit-box-shadow: 0 0 0px 1000px #173f1f inset !important; /* Memaksa latar belakang tetap hijau hutan tua yang persis sama */
+    caret-color: var(--color-lime-bud) !important; /* Menjaga kursor pengetikan tetap hijau terang */
+    border: 1px solid rgba(216, 233, 168, 0.3) !important;
+    transition: background-color 50000s ease-in-out 0s;
+}

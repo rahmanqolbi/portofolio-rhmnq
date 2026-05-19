@@ -1,0 +1,49 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const portfolios = [
+  { 
+    title: "Catatanku", 
+    img: "/img/portfolio/catatanku.jpeg", 
+    visitLink: "https://catatanku.vercel.app", 
+    githubLink: "https://github.com/rahmanqolbi" 
+  },
+  { 
+    title: "Website Portofolio Tailwind", 
+    img: "/img/portfolio/portofolio-tailwind.png", 
+    visitLink: "https://rahmanqolbi.vercel.app/", 
+    githubLink: "https://github.com/rahmanqolbi" 
+  },
+  { 
+    title: "Website Berita Bootstrap", 
+    img: "/img/portfolio/berita-bootstrap.png", 
+    visitLink: "https://whistleable-varieti.000webhostapp.com", 
+    githubLink: "https://github.com/rahmanqolbi" 
+  },
+  { 
+    title: "Website Tiket Pesawat", 
+    img: "/img/portfolio/tiket-pesawat.png", 
+    visitLink: "/", 
+    githubLink: "/" 
+  }
+];
+---
+
+<MainLayout title="Portofolio | Rahman Qolbi" description="Lihat proyek-proyek web development yang pernah saya buat, mulai dari aplikasi catatan hingga web portofolio Tailwind.">
+  <article id="Portofolio" class="flex-[3] w-full max-w-[620px] mx-auto lg:max-w-none flex flex-col items-center justify-center p-5 lg:p-4 bg-forest-sage rounded-[28px] lg:rounded-[50px] shadow-tactile-double flex-grow">
+    <h1 class="text-center text-lg md:text-2xl font-black mb-2">Portofolio</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 justify-center justify-items-center w-full gap-2 md:gap-2.5 max-w-[460px] mx-auto">
+      {portfolios.map((item) => (
+        <div class="flex flex-col items-center p-3 max-w-[220px] w-full bg-[#235d2e] rounded-[24px] shadow-[4px_4px_1px_rgba(18,51,25,0.65),_-3px_-3px_1px_rgba(216,233,168,0.15)] hover:-translate-y-0.5 hover:shadow-[5px_5px_2px_rgba(18,51,25,0.75),_-4px_-4px_2px_rgba(216,233,168,0.22)] transition-all">
+          <img class="w-[180px] h-[108px] object-cover mb-1.5 rounded-xl border border-lime-bud/10 shadow-sm bg-shadow-dark/20" src={item.img} alt={item.title} width="180" height="108" loading="eager" decoding="sync" />
+
+          <p class="text-sm text-center mb-1.5 font-bold text-lime-bud min-h-[36px] flex items-center justify-center">{item.title}</p>
+          <div class="flex flex-row">
+            <a href={item.visitLink} target="_blank" rel="noreferrer" class="px-3 py-1.5 md:px-3.5 md:py-1.5 m-0.5 rounded-btn-mobile md:rounded-btn border border-lime-bud/50 hover:border-lime-bud bg-[#1E5128] text-lime-bud text-xs md:text-sm font-semibold cursor-pointer text-center hover:bg-lime-bud/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-bud focus-visible:ring-offset-2 focus-visible:ring-offset-[#235d2e]" aria-label={`Kunjungi situs ${item.title}`}>Visit</a>
+            <a href={item.githubLink} target="_blank" rel="noreferrer" class="px-3 py-1.5 md:px-3.5 md:py-1.5 m-0.5 rounded-btn-mobile md:rounded-btn border border-lime-bud/50 hover:border-lime-bud bg-[#1E5128] text-lime-bud text-xs md:text-sm font-semibold cursor-pointer text-center hover:bg-lime-bud/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-bud focus-visible:ring-offset-2 focus-visible:ring-offset-[#235d2e]" aria-label={`Lihat repositori GitHub ${item.title}`}>Github</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </article>
+</MainLayout>
