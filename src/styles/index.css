@@ -155,5 +155,5 @@ textarea:-internal-autofill-selected {
     -webkit-box-shadow: 0 0 0px 1000px #173f1f inset !important; /* Memaksa latar belakang tetap hijau hutan tua yang persis sama */
     caret-color: var(--color-lime-bud) !important; /* Menjaga kursor pengetikan tetap hijau terang */
     border: 1px solid rgba(216, 233, 168, 0.3) !important;
-    transition: background-color 50000s ease-in-out 0s;
+    transition: background-color 0.2s ease-in-out 0s;
 }
