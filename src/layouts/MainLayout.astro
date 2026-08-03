@@ -8,15 +8,66 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  keywords?: string;
 }
 
 const { 
   title, 
-  description = "Portofolio Pribadi Rahman Qolbi - Web Developer. Masih terus belajar dan terus belajar." 
+  description = "Portofolio Pribadi Rahman Qolbi - Web & Frontend Developer. Kumpulan proyek web development, eksperimen koding, dan keahlian teknologi.",
+  image = "/img/biodata.png",
+  keywords = "Rahman Qolbi, Web Developer, Frontend Engineer, Portfolio Web, Astro JS, Tailwind CSS, JavaScript, Web Application, Indonesia"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rqlb.my.id/#person",
+      "name": "Rahman Qolbi",
+      "url": "https://rqlb.my.id",
+      "image": "https://rqlb.my.id/img/biodata.png",
+      "jobTitle": "Web & Frontend Developer",
+      "sameAs": [
+        "https://github.com/rahmanqolbi",
+        "https://instagram.com/rahmanqolbi",
+        "mailto:rahmanqolbi@gmail.com"
+      ],
+      "knowsAbout": ["Web Development", "JavaScript", "Astro", "React", "Tailwind CSS", "Bootstrap", "HTML", "CSS", "Flutter"],
+      "description": "Tech & Coding Enthusiast. Senang mengulik baris kode, mengeksplorasi teknologi web modern, dan merancang produk digital."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rqlb.my.id/#website",
+      "url": "https://rqlb.my.id",
+      "name": "Rahman Qolbi Portfolio",
+      "description": "Portofolio Pribadi Rahman Qolbi - Web & Frontend Developer",
+      "publisher": {
+        "@id": "https://rqlb.my.id/#person"
+      },
+      "inLanguage": "id-ID"
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalURL.href}#webpage`,
+      "url": canonicalURL.href,
+      "name": title,
+      "description": description,
+      "isPartOf": {
+        "@id": "https://rqlb.my.id/#website"
+      },
+      "about": {
+        "@id": "https://rqlb.my.id/#person"
+      },
+      "inLanguage": "id-ID"
+    }
+  ]
+};
 ---
-
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -28,41 +79,49 @@ const {
     <!-- SPA Mode (Instant Transitions) -->
     <ClientRouter />
     
-    <!-- SEO Meta Tags -->
+    <!-- Primary SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://rqlb.my.id/" />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Rahman Qolbi" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#1E5128" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rqlb.my.id/" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://rqlb.my.id/img/biodata.png" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Rahman Qolbi Portfolio" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://rqlb.my.id/" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="https://rqlb.my.id/img/biodata.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <div class="flex flex-col items-center min-h-screen lg:h-screen lg:overflow-hidden w-full py-1.5 lg:py-2.5 justify-between">
+    <div class="flex flex-col items-center min-h-screen lg:h-screen w-full py-2 lg:py-4 justify-between">
       <header class="w-full block">
         <Navbar />
       </header>
 
-      <main class="flex flex-col lg:flex-row max-w-[1140px] w-full mx-auto px-4 lg:px-0 flex-grow items-center lg:items-stretch justify-center gap-8 lg:gap-0 my-4 lg:my-0 min-h-0 lg:py-2">
+      <main class="flex flex-col lg:flex-row max-w-[1160px] w-full mx-auto px-4 sm:px-6 lg:px-0 flex-grow items-center lg:items-stretch justify-center gap-6 lg:gap-8 my-4 lg:my-5 xl:my-6 min-h-0">
         {/* BAGIAN KIRI: Main Page Content */}
-        <div id="main-content-wrapper" class="flex-[5] lg:mr-10 min-w-0 flex flex-col w-full items-stretch lg:h-full">
+        <div id="main-content-wrapper" class="flex-1 min-w-0 flex flex-col w-full items-stretch min-h-0">
           <slot />
         </div>
-
-
 
         {/* BAGIAN KANAN: Sidebar Biodata */}
         <Sidebar />

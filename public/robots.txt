@@ -1,0 +1,7 @@
+# Allow crawling of all content
+User-agent: *
+Allow: /
+
+# Host & Sitemap location
+Host: https://rqlb.my.id
+Sitemap: https://rqlb.my.id/sitemap-index.xml
